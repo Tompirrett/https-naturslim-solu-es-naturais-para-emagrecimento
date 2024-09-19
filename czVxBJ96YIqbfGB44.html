@@ -1,0 +1,465 @@
+<html><head><base href="https://naturslim.com/">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NaturSlim - Soluções Naturais para Emagrecimento</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        line-height: 1.6;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+    }
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: auto;
+        overflow: hidden;
+        padding: 20px;
+    }
+    header {
+        background: linear-gradient(rgba(102, 187, 106, 0.8), rgba(67, 160, 71, 0.8)), url('herbal-background.jpg') no-repeat center center/cover;
+        color: white;
+        padding-top: 30px;
+        min-height: 200px;
+        border-bottom: #43a047 3px solid;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    header h1 {
+        margin: 0;
+        text-align: center;
+        font-size: 3.5em;
+        font-family: 'Playfair Display', serif;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    nav {
+        background: #2e7d32;
+        padding: 10px 0;
+    }
+    nav ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        text-align: center;
+    }
+    nav li {
+        display: inline;
+        margin: 0 10px;
+    }
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .hero {
+        background: url('herbal-background.jpg') no-repeat center center/cover;
+        height: 400px;
+        color: white;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .hero-content {
+        background: rgba(0,0,0,0.6);
+        padding: 20px;
+        border-radius: 15px;
+    }
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 30px;
+    }
+    .product-card {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+    .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    .product-card img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+    .product-card h3 {
+        font-family: 'Playfair Display', serif;
+        color: #2e7d32;
+        font-size: 1.8em;
+        margin-bottom: 15px;
+    }
+    .price {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #43a047;
+        margin-bottom: 10px;
+    }
+    .installment {
+        font-size: 0.9em;
+        color: #666;
+        margin-bottom: 15px;
+    }
+    .pix-price {
+        font-size: 1.1em;
+        color: #1976d2;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+    .cta-button {
+        display: inline-block;
+        background: #66bb6a;
+        color: #fff;
+        padding: 12px 25px;
+        text-decoration: none;
+        border-radius: 25px;
+        margin-top: 15px;
+        font-weight: bold;
+        transition: background 0.3s ease;
+    }
+    .cta-button:hover {
+        background: #43a047;
+    }
+    footer {
+        background: #2e7d32;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+    }
+    #cart-icon {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #66bb6a;
+        color: white;
+        padding: 12px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 1000;
+        transition: background 0.3s ease;
+    }
+    #cart-icon:hover {
+        background: #43a047;
+    }
+    #cart-count {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: #f44336;
+        color: white;
+        border-radius: 50%;
+        padding: 2px 6px;
+        font-size: 12px;
+    }
+    .info-box {
+        background: #e8f5e9;
+        border: 2px solid #66bb6a;
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 30px;
+        text-align: center;
+    }
+    .pix-info {
+        background: #e3f2fd;
+        border: 2px solid #1976d2;
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 20px;
+        text-align: center;
+        color: #1976d2;
+    }
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1001;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 600px;
+        border-radius: 10px;
+    }
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    form {
+        display: grid;
+        gap: 15px;
+    }
+    input, select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    .tab-content {
+        display: none;
+    }
+    .tab-content.active {
+        display: block;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>NaturSlim</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home" class="tab-link" data-tab="home">Início</a></li>
+            <li><a href="#products" class="tab-link" data-tab="products">Produtos</a></li>
+            <li><a href="#about" class="tab-link" data-tab="about">Sobre Nós</a></li>
+            <li><a href="#contact" class="tab-link" data-tab="contact">Contato</a></li>
+        </ul>
+    </nav>
+
+    <div id="cart-icon">
+        🛒
+        <span id="cart-count">0</span>
+    </div>
+
+    <div id="home" class="tab-content active">
+        <div class="hero">
+            <div class="hero-content">
+                <h2>Soluções Naturais para Emagrecimento</h2>
+                <p>Descubra o poder dos fitoterápicos para uma vida mais saudável e equilibrada</p>
+                <a href="#products" class="cta-button tab-link" data-tab="products">Conheça Nossos Produtos</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="products" class="tab-content">
+        <div class="container">
+            <h2>Nossos Produtos</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="red-capsules.jpg" alt="Cápsulas fitoterápicas vermelhas do Red" width="250" height="250">
+                    <h3>Red</h3>
+                    <p>Potente na queima de gordura e aceleração do metabolismo</p>
+                    <div class="price">R$ 150,00 à vista</div>
+                    <div class="installment">ou 2x de R$ 82,50 com juros</div>
+                    <div class="pix-price">R$ 135,00 no PIX (10% de desconto)</div>
+                    <a href="#" class="cta-button add-to-cart" data-product="Red" data-price="150">Comprar Agora</a>
+                </div>
+                <div class="product-card">
+                    <img src="black-capsules.jpg" alt="Cápsulas fitoterápicas pretas do Black" width="250" height="250">
+                    <h3>Black</h3>
+                    <p>Ideal para desinchaço e eliminação de líquidos</p>
+                    <div class="price">R$ 160,00 à vista</div>
+                    <div class="installment">ou 2x de R$ 88,00 com juros</div>
+                    <div class="pix-price">R$ 144,00 no PIX (10% de desconto)</div>
+                    <a href="#" class="cta-button add-to-cart" data-product="Black" data-price="160">Comprar Agora</a>
+                </div>
+                <div class="product-card">
+                    <img src="green-capsules.jpg" alt="Cápsulas fitoterápicas verdes do Green" width="250" height="250">
+                    <h3>Green</h3>
+                    <p>Controle do apetite e revitalização do organismo</p>
+                    <div class="price">R$ 140,00 à vista</div>
+                    <div class="installment">ou 2x de R$ 77,00 com juros</div>
+                    <div class="pix-price">R$ 126,00 no PIX (10% de desconto)</div>
+                    <a href="#" class="cta-button add-to-cart" data-product="Green" data-price="140">Comprar Agora</a>
+                </div>
+            </div>
+            <div class="info-box">
+                <h3>Entrega para todo o Brasil</h3>
+                <p>Realizamos entregas para todos os estados brasileiros. O valor do frete será calculado no checkout.</p>
+                <p>Parcelamos em até 2x com juros. Aproveite o desconto para pagamento à vista!</p>
+            </div>
+            <div class="info-box">
+                <h3>Entrega Rápida para Curitiba e Região Metropolitana</h3>
+                <p>Para Curitiba e região metropolitana, realizamos entrega em até 48 horas!</p>
+            </div>
+            <div class="pix-info">
+                <h3>Pagamento via PIX</h3>
+                <p>Agora você pode pagar com PIX e ganhar 10% de desconto em todos os produtos!</p>
+                <p>Pague de forma rápida, segura e econômica.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="about" class="tab-content">
+        <div class="container">
+            <h2>Sobre a NaturSlim</h2>
+            <p>A NaturSlim é uma empresa dedicada a oferecer soluções naturais e eficazes para o emagrecimento. Nossos produtos são desenvolvidos com ingredientes fitoterápicos cuidadosamente selecionados, visando proporcionar resultados reais e duradouros para nossos clientes.</p>
+            <p>Acreditamos no poder da natureza aliado à ciência para promover uma vida mais saudável e equilibrada. Todos os nossos produtos passam por rigorosos testes de qualidade e eficácia antes de chegarem até você.</p>
+        </div>
+    </div>
+
+    <div id="contact" class="tab-content">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+            <p>Tem dúvidas ou precisa de mais informações? Entre em contato conosco!</p>
+            <p>Email: fitoterapia.bra.br@gmail.com</p>
+            <p>Telefone: (42) 98831-2178</p>
+            <p>Localização: Curitiba - Paraná</p>
+        </div>
+    </div>
+
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Seu Carrinho</h2>
+            <div id="cartItems"></div>
+            <div id="cartTotal"></div>
+            <button id="checkoutBtn" class="cta-button">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Finalizar Compra</h2>
+            <form id="checkoutForm">
+                <input type="text" name="name" placeholder="Nome Completo" required>
+                <input type="email" name="email" placeholder="E-mail" required>
+                <input type="tel" name="phone" placeholder="Telefone" required>
+                <input type="text" name="address" placeholder="Endereço de Entrega" required>
+                <input type="text" name="city" placeholder="Cidade" required>
+                <input type="text" name="state" placeholder="Estado" required>
+                <input type="text" name="zipcode" placeholder="CEP" required>
+                <select name="payment" required>
+                    <option value="">Selecione a forma de pagamento</option>
+                    <option value="pix">PIX (10% de desconto)</option>
+                    <option value="credit">Cartão de Crédito</option>
+                    <option value="boleto">Boleto Bancário</option>
+                </select>
+                <button type="submit" class="cta-button">Confirmar Pedido</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 NaturSlim. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const cartIcon = document.getElementById('cart-icon');
+            const cartCount = document.getElementById('cart-count');
+            const cartModal = document.getElementById('cartModal');
+            const checkoutModal = document.getElementById('checkoutModal');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            const closeBtns = document.getElementsByClassName('close');
+            let cart = [];
+
+            function updateCartDisplay() {
+                cartCount.textContent = cart.length;
+                cartItems.innerHTML = '';
+                let total = 0;
+                cart.forEach((item, index) => {
+                    const itemElement = document.createElement('div');
+                    itemElement.textContent = `${item.name} - R$ ${item.price.toFixed(2)}`;
+                    const removeBtn = document.createElement('button');
+                    removeBtn.textContent = 'Remover';
+                    removeBtn.onclick = () => removeFromCart(index);
+                    itemElement.appendChild(removeBtn);
+                    cartItems.appendChild(itemElement);
+                    total += item.price;
+                });
+                cartTotal.textContent = `Total: R$ ${total.toFixed(2)}`;
+            }
+
+            function addToCart(product, price) {
+                cart.push({name: product, price: price});
+                updateCartDisplay();
+            }
+
+            function removeFromCart(index) {
+                cart.splice(index, 1);
+                updateCartDisplay();
+            }
+
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const product = e.target.dataset.product;
+                    const price = parseFloat(e.target.dataset.price);
+                    addToCart(product, price);
+                });
+            });
+
+            cartIcon.onclick = () => {
+                cartModal.style.display = 'block';
+            };
+
+            checkoutBtn.onclick = () => {
+                cartModal.style.display = 'none';
+                checkoutModal.style.display = 'block';
+            };
+
+            Array.from(closeBtns).forEach(btn => {
+                btn.onclick = function() {
+                    this.parentElement.parentElement.style.display = 'none';
+                }
+            });
+
+            window.onclick = (event) => {
+                if (event.target == cartModal) {
+                    cartModal.style.display = 'none';
+                }
+                if (event.target == checkoutModal) {
+                    checkoutModal.style.display = 'none';
+                }
+            };
+
+            document.getElementById('checkoutForm').onsubmit = (e) => {
+                e.preventDefault();
+                alert('Pedido realizado com sucesso! Obrigado por comprar conosco.');
+                cart = [];
+                updateCartDisplay();
+                checkoutModal.style.display = 'none';
+            };
+
+            // Tab functionality
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const tabId = link.getAttribute('data-tab');
+                    
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
